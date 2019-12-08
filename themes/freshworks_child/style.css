@@ -6,19 +6,25 @@ Author: Dave Gaskin
 
 :root {
 	--theme-color: magenta;
+	--dark-color: #010203;
 }
 
-/**
- * Hacky way to set theme color
- */
-.home .section-title a,
-.home .post-info a,
+/* Theme color */
+#topbar .logo h1 > a,
+#backToHome .link-title a,
+#site-navigation > div > ul a:hover {
+	color: var(--theme-color);
+}
+
 #comments p a,
 .comment-meta.commentmetadata a {
 	color: var(--theme-color) !important;
 }
 
-.post-main-box .more-btn a,
+.post-main-box .more-btn a {
+	background: var(--theme-color)
+}
+
 #sidebar .widget-title,
 .toggle-nav.mobile-menu i,
 #footer-2 > div.copyright.container > a > i,
@@ -28,12 +34,33 @@ Author: Dave Gaskin
 	background: var(--theme-color) !important;
 }
 
-/** index page - car posts */
+/* Dark color */
+.section-title a,
+.post-info a {
+	color: var(--dark-color);
+}
+
+/** Other colors **/
+.home .post-info a:hover,
+.home .section-title a:hover {
+	color: #999;
+}
+
+
+
+/*** Index page - Individual Posts ***/
 .description {
 	line-height: 1;
 }
 .sale-price {
 	font-weight: bold;
-	color: var(--theme-color);
+	color: var(--dark-color);
 	font-size: 18px;
+}
+
+/*** 'Back to Cars' Button ***/
+#backToHome .link-title {
+	text-decoration: underline;
+	margin: 1em 0;
+	color: var(--theme-color);
 }

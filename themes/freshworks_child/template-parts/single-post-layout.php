@@ -14,7 +14,7 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('inner-service'); ?>>
     <div class="single-post">
-        <h2><?php the_title(); ?></h2>
+        <h2 class="post-title"><?php the_title(); ?></h2>
 
         <?php if(has_post_thumbnail()) { ?>
             <div class="feature-box">
@@ -35,24 +35,33 @@
 
             <div class="tags"><?php the_tags(); ?></div>
         </div>
+
         <div class="post-info">
             <?php if(get_theme_mod('automotive_centre_toggle_postdate',true)==1){ ?>
               <i class="fas fa-calendar-alt"></i><span class="entry-date"><a href="<?php echo esc_url( get_day_link( $archive_year, $archive_month, $archive_day)); ?>"><?php echo esc_html( get_the_date() ); ?><span class="screen-reader-text"><?php echo esc_html( get_the_date() ); ?></span></a></span><span>|</span>
-            <?php } ?>
-
-            <?php if(get_theme_mod('automotive_centre_toggle_author',true)==1){ ?>
-              <i class="far fa-user"></i><span class="entry-author"><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' )) ); ?>"><?php the_author(); ?><span class="screen-reader-text"><?php the_author(); ?></span></a></span><span>|</span>
             <?php } ?>
 
             <?php if(get_theme_mod('automotive_centre_toggle_comments',true)==1){ ?>
               <i class="fa fa-comments" aria-hidden="true"></i><span class="entry-comments"><?php comments_number( __('0 Reviews', 'automotive-centre'), __('0 Reviews', 'automotive-centre'), __('% Reviews', 'automotive-centre') ); ?> </span>
             <?php } ?>
         </div>
+        <hr />
+        <div id="reviews">
+           <h2>Reviews</h2>
+           <p>Todo</p>
+           <ul>
+              <li>link reviews to this post ID</li>
+              <li>Output reviews and form</li>
+           </ul>
+        </div>
+
+        <article id="backToHome" class="back-to-home">
+           <h4 class="link-title"><a href="<?php echo get_home_url(); ?>">Back to Cars</a></h4>
+        </article>
 
         <?php
-            // If comments are open or we have at least one comment, load up the comment template
-            if ( comments_open() || '0' != get_comments_number() )
-               comments_template();
+
+
 
             if ( is_singular( 'attachment' ) ) {
                 // Parent post navigation.
