@@ -7,16 +7,9 @@ function enqueue_child_theme_styles() {
   wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
 }
 
-// $comment_args = array(
-//
-// )
-// apply_filters( 'comments_template_query_args', array $comment_args );
-//
-// $comment_fields = array(
-//
-// )
-// apply_filters( 'comment_form_fields', array $comment_fields );
-
+/**
+ * Filter comment form args to read 'review'
+ */
 function fw_changeCommentFormTitle() {
    return $commentArgs = array(
      'title_reply' => 'Leave a Review',
@@ -32,6 +25,31 @@ function fw_changeCommentFormTitle() {
      ),
   );
 }
-
-
 add_filter( 'comment_form_defaults', 'fw_changeCommentFormTitle' );
+
+/**
+ * Set up custom post type 'Cars'
+ */
+function fw_createCarCustomPostType() {
+   register_post_type('cars',
+      array(
+         'labels'     => array(
+            'name'          => __('Cars'),
+            'singular_name' => __('Car'),
+      ),
+      'description' => 'Post type for cars for sale',
+      'public'      => true,
+      'has_archive' => true,
+      'publicly_queryable' => true,
+      'show_ui' => true,
+      'show_in_menu' => true,
+      'supports' => array(
+         'title',
+			'editor',
+         'comments',
+         'custom-fields',
+         'thumbnail'
+      )
+   ));
+}
+add_action('init', 'fw_createCarCustomPostType');
