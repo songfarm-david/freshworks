@@ -27,6 +27,7 @@
 
             <?php
                if ( is_singular('cars') ) { ?>
+                  <p><b>Description:</b> <?php the_field('description'); ?></p>
                   <p><b>Make:</b> <?php the_field('make'); ?></p>
                   <p><b>Model:</b> <?php the_field('model'); ?></p>
                   <p><b>Year:</b> <?php the_field('year'); ?></p>

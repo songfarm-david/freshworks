@@ -52,7 +52,6 @@ function fw_createCarCustomPostType() {
       'show_in_menu' => true,
       'supports' => array(
          'title',
-			'editor',
          'comments',
          'custom-fields',
          'thumbnail'
@@ -64,12 +63,12 @@ add_action('init', 'fw_createCarCustomPostType');
 /**
  * Filter content output
  */
-function fw_filterContentOutput($content) {
-
-   if ( is_singular('cars') ) {
-      $content = '<b>Description: </b>' . $content;
-      return $content;
-   }
-
-}
-add_filter('the_content', 'fw_filterContentOutput');
+// function fw_filterContentOutput($content) {
+//
+//    if ( is_singular('cars') ) {
+//       $content = '<b>Description: </b>' . $content;
+//       return $content;
+//    }
+//
+// }
+// add_filter('the_content', 'fw_filterContentOutput');
