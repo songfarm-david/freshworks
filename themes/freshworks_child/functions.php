@@ -36,6 +36,13 @@ function fw_createCarCustomPostType() {
          'labels'     => array(
             'name'          => __('Cars'),
             'singular_name' => __('Car'),
+            'edit_item'     => __('Edit Car'),
+            'new_item'      => __('New Car'),
+            'add_new_item'  => __('Add New Car'),
+            'view_item'     => __('View Car'),
+            'view_items'    => __('View Cars'),
+            'all_items'     => __('All Cars'),
+            'item_updated ' => __('Car Updated')
       ),
       'description' => 'Post type for cars for sale',
       'public'      => true,
@@ -53,3 +60,16 @@ function fw_createCarCustomPostType() {
    ));
 }
 add_action('init', 'fw_createCarCustomPostType');
+
+/**
+ * Filter content output
+ */
+function fw_filterContentOutput($content) {
+
+   if ( is_singular('cars') ) {
+      $content = '<b>Description: </b>' . $content;
+      return $content;
+   }
+
+}
+add_filter('the_content', 'fw_filterContentOutput');

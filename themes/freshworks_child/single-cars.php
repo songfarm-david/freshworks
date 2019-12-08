@@ -7,7 +7,7 @@
 
  get_header(); ?>
 
-<main id="maincontent" role="main" class='cars-custom-pt'>
+<main id="maincontent" role="main">
   <div class="middle-align container">
     <?php
         $theme_lay = get_theme_mod( 'automotive_centre_theme_options','Right Sidebar');
@@ -82,6 +82,7 @@
         <div id="our-services" class="services">
 
           <?php if ( have_posts() ) :
+
             /* Start the Loop */
 
               while ( have_posts() ) : the_post();
@@ -89,6 +90,8 @@
                 get_template_part( 'template-parts/single-post-layout' );
 
               endwhile;
+
+
 
               else :
 
