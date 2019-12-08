@@ -52,7 +52,6 @@ function fw_createCarCustomPostType() {
       'show_in_menu' => true,
       'supports' => array(
          'title',
-			'editor',
          'comments',
          'custom-fields',
          'thumbnail'
@@ -62,14 +61,67 @@ function fw_createCarCustomPostType() {
 add_action('init', 'fw_createCarCustomPostType');
 
 /**
- * Filter content output
+ * Set up custom post type 'Cars'
  */
-function fw_filterContentOutput($content) {
+function fw_createReviewCustomPostType() {
+   register_post_type('reviews',
+      array(
+         'labels'     => array(
+            'name'          => __('Reviews'),
+            'singular_name' => __('Review'),
+            'edit_item'     => __('Edit Review'),
+            'new_item'      => __('New Review'),
+            'add_new_item'  => __('Add New Review'),
+            'view_item'     => __('View Review'),
+            'view_items'    => __('View Reviews'),
+            'all_items'     => __('All Reviews'),
+            'item_updated ' => __('Review Updated')
+      ),
+      'description' => 'Post type for cars for sale',
+      'public'      => true,
+      'has_archive' => true,
+      'publicly_queryable' => true,
+      'show_ui' => true,
+      'show_in_menu' => true,
+      'menu_icon' => 'dashicons-star-empty',
+      'supports' => array(
+         'editor',
+         'author',
+         'comments'
+      )
+   ));
+}
+add_action('init', 'fw_createReviewCustomPostType');
 
-   if ( is_singular('cars') ) {
-      $content = '<b>Description: </b>' . $content;
-      return $content;
-   }
+/**
+ * Get 'Cars' custom post type for
+ * main query on index page
+ */
+function fw_getCars( $query ) {
+   if(!$query->is_main_query() || !is_home())
+      return;
+   $query->set( 'post_type', array('cars') );
 
 }
-add_filter('the_content', 'fw_filterContentOutput');
+add_action('pre_get_posts', 'fw_getCars');
+
+/**
+ * Change name of meta box on cars post type
+ */
+function fw_renameCommentsMetaBox() {
+    global $wp_meta_boxes;
+    $wp_meta_boxes['cars']['normal']['core']['commentsdiv']['title']= 'Reviews';
+}
+add_action('add_meta_boxes', 'fw_renameCommentsMetaBox', 999);
+
+/**
+ * Rename 'Comments' label in Admin Menu
+ */
+function fw_renameCommentsAdminMenuLabel() {
+   global $menu, $submenu;
+   $menu['25']['0'] = 'Reviews';
+   $menu['25']['6'] = 'dashicons-star-empty';
+   $submenu['edit-comments.php']['0']['0'] = 'All Reviews';
+   // TODO: Update comments page in admin
+}
+// add_action('admin_menu', 'fw_renameCommentsAdminMenuLabel');

@@ -27,12 +27,11 @@
 
             <?php
                if ( is_singular('cars') ) { ?>
+                  <p><b>Description:</b> <?php the_field('description'); ?></p>
                   <p><b>Make:</b> <?php the_field('make'); ?></p>
                   <p><b>Model:</b> <?php the_field('model'); ?></p>
                   <p><b>Year:</b> <?php the_field('year'); ?></p>
             <?php } ?>
-
-
 
             <div class="tags"><?php the_tags(); ?></div>
         </div>
@@ -53,7 +52,7 @@
         <?php
             // If comments are open or we have at least one comment, load up the comment template
             if ( comments_open() || '0' != get_comments_number() )
-            comments_template();
+               comments_template();
 
             if ( is_singular( 'attachment' ) ) {
                 // Parent post navigation.

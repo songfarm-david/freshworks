@@ -1,9 +1,6 @@
 <?php
 /**
- * Custom template for Reviews
- * NOTE: The terminology hasn't been changed except when client-facing
- *
- * @package Automotive Centre
+ * Turns theme "comments" into "reviews"
  */
 
 /*
