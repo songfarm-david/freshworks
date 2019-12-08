@@ -125,3 +125,11 @@ function fw_renameCommentsAdminMenuLabel() {
    // TODO: Update comments page in admin
 }
 // add_action('admin_menu', 'fw_renameCommentsAdminMenuLabel');
+
+/**
+ * Filter for putting class on select menu item
+ */
+function fw_filterMenu( $items ) {
+   // var_dump($items);
+}
+add_filter('wp_nav_menu_items', 'fw_filterMenu', 10, 2);
