@@ -3,3 +3,17 @@ Theme Name: Freshworks Child
 Template: automotive-centre
 Author: Dave Gaskin
 */
+
+:root {
+	--theme-color: magenta;
+}
+
+/** index page - car posts */
+.description {
+	line-height: 1;
+}
+.sale-price {
+	font-weight: bold;
+	color: var(--theme-color);
+	font-size: 18px;
+}

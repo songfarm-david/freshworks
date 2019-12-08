@@ -61,14 +61,13 @@ function fw_createCarCustomPostType() {
 add_action('init', 'fw_createCarCustomPostType');
 
 /**
- * Filter content output
+ * Get 'Cars' custom post type for
+ * main query on index page
  */
-// function fw_filterContentOutput($content) {
-//
-//    if ( is_singular('cars') ) {
-//       $content = '<b>Description: </b>' . $content;
-//       return $content;
-//    }
-//
-// }
-// add_filter('the_content', 'fw_filterContentOutput');
+function fw_getCars( $query ) {
+   if(!$query->is_main_query() || !is_home())
+      return;
+   $query->set( 'post_type', array('cars') );
+
+}
+add_action('pre_get_posts', 'fw_getCars');
