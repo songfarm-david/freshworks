@@ -33,8 +33,6 @@
                   <p><b>Year:</b> <?php the_field('year'); ?></p>
             <?php } ?>
 
-
-
             <div class="tags"><?php the_tags(); ?></div>
         </div>
         <div class="post-info">
@@ -54,7 +52,7 @@
         <?php
             // If comments are open or we have at least one comment, load up the comment template
             if ( comments_open() || '0' != get_comments_number() )
-            comments_template();
+               comments_template();
 
             if ( is_singular( 'attachment' ) ) {
                 // Parent post navigation.

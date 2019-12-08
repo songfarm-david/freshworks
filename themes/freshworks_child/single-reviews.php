@@ -1,16 +1,11 @@
 <?php
 /**
- * The template for displaying home page.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
+ * The Template for displaying all single posts.
  *
  * @package Automotive Centre
  */
 
-get_header(); ?>
+ get_header(); ?>
 
 <main id="maincontent" role="main">
   <div class="middle-align container">
@@ -26,7 +21,7 @@ get_header(); ?>
 
                 while ( have_posts() ) : the_post();
 
-                  get_template_part( 'template-parts/content',get_post_format());
+                  get_template_part( 'template-parts/single-post-layout' );
 
                 endwhile;
 
@@ -58,7 +53,8 @@ get_header(); ?>
               /* Start the Loop */
 
                 while ( have_posts() ) : the_post();
-                  get_template_part( 'template-parts/content',get_post_format());
+
+                  get_template_part( 'template-parts/single-post-layout' );
 
                 endwhile;
 
@@ -90,7 +86,7 @@ get_header(); ?>
 
               while ( have_posts() ) : the_post();
 
-                get_template_part( 'template-parts/content',get_post_format());
+                get_template_part( 'template-parts/single-post-layout' );
 
               endwhile;
 
@@ -122,7 +118,7 @@ get_header(); ?>
 
                 while ( have_posts() ) : the_post();
 
-                  get_template_part( 'template-parts/content',get_post_format());
+                  get_template_part( 'template-parts/single-post-layout' );
 
                 endwhile;
 
@@ -156,7 +152,7 @@ get_header(); ?>
 
                 while ( have_posts() ) : the_post();
 
-                  get_template_part( 'template-parts/content',get_post_format());
+                  get_template_part( 'template-parts/single-post-layout' );
 
                 endwhile;
 
@@ -175,7 +171,7 @@ get_header(); ?>
                       'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'automotive-centre' ) . ' </span>',
                   ) );
               ?>
-              <div class="clearfix"></div>
+                <div class="clearfix"></div>
             </div>
           </div>
           <div class="col-lg-3 col-md-3" id="sidebar"><?php dynamic_sidebar('sidebar-2');?></div>
@@ -184,13 +180,13 @@ get_header(); ?>
     <?php }else if($theme_lay == 'Grid Layout'){ ?>
         <div class="row m-0">
           <div id="our-services" class="services col-lg-9 col-md-9">
-            <div class="row">
+            <div class="row m-0">
               <?php if ( have_posts() ) :
                 /* Start the Loop */
 
                   while ( have_posts() ) : the_post();
 
-                    get_template_part( 'template-parts/grid-layout' );
+                    get_template_part( 'template-parts/single-post-layout' );
 
                   endwhile;
 
@@ -210,7 +206,7 @@ get_header(); ?>
                       'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'automotive-centre' ) . ' </span>',
                   ) );
               ?>
-              <div class="clearfix"></div>
+                <div class="clearfix"></div>
             </div>
           </div>
           <div class="col-lg-3 col-md-3" id="sidebar"><?php dynamic_sidebar('sidebar-1');?></div>
@@ -223,7 +219,7 @@ get_header(); ?>
 
               while ( have_posts() ) : the_post();
 
-                get_template_part( 'template-parts/content',get_post_format());
+                get_template_part( 'template-parts/single-post-layout');
 
               endwhile;
 

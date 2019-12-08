@@ -8,6 +8,26 @@ Author: Dave Gaskin
 	--theme-color: magenta;
 }
 
+/**
+ * Hacky way to set theme color
+ */
+.home .section-title a,
+.home .post-info a,
+#comments p a,
+.comment-meta.commentmetadata a {
+	color: var(--theme-color) !important;
+}
+
+.post-main-box .more-btn a,
+#sidebar .widget-title,
+.toggle-nav.mobile-menu i,
+#footer-2 > div.copyright.container > a > i,
+#footer-2,
+#comments input[type="submit"],
+#comments a.comment-reply-link {
+	background: var(--theme-color) !important;
+}
+
 /** index page - car posts */
 .description {
 	line-height: 1;
